@@ -1,0 +1,55 @@
+# Decision log — user clarification and architecture review
+
+Status: living review log, not manufacturing approval evidence. Entries below summarize identifiable user answers from this conversation in order; they do not invent signers, dates of physical work or formal customer approvals. Review date: November 2, 2026 (America/Los_Angeles). The user subsequently approved the revised architecture and authorized the bounded development prototype (D23); this does not approve production use or resolve engineering TBDs.
+
+Statuses: **confirmed** = user direction accepted for design; **partial** = only the stated portion answered; **open** = pending; **proposed** = recommendation, not accepted. Engineering/customer signoff remains separately required where the [gap register](gap-analysis.md) specifies it. A changed decision gets a successor entry; do not erase the earlier answer or silently broaden it.
+
+| ID | User answer / context | Status and exact scope | Design impact / linked questions |
+| --- | --- | --- | --- |
+| D01 | “yes i think” followed by instruction to use Rev C as locked software baseline while preserving discussion-draft status | Confirmed software-baseline direction; not production approval | F authority/draft status, all routing; never infer production qualification |
+| D02 | “probably option 1 but cone may opt to use their own variation” | Initially partial system ownership; later finalized by D13 | Application-primary proposal and approved Cone mapping; legacy Q01 → A01 |
+| D03 | Generally shop-floor Internet; some workers need help; manual work must tie in | Confirmed online/manual/assisted need; did not itself authorize disconnected approvals | Performer versus entrant; no mandatory welder account; outage decision later D14 |
+| D04 | Each organization has senior/internal approvers within procedure; Cone owners such as Jake or his father examples; Picogrid not doing day-to-day Cone qualification approvals | Confirmed organizational model; named appointments not finalized | Cone routine operator/equipment qualification and normal release; Picogrid WPS/customer decisions; A06/B19 |
+| D05 | AM Kreations/developer and Picogrid can see anything; Picogrid drives program | Confirmed broad program visibility for those parties; not disclosure of credentials | Read versus engineering authority separate; Cone visibility was initially open, subsequently resolved D19/A05 |
+| D06 | People may approve their own work initially, with ability for authority to restrict it later; must already be allowed to approve that type | Confirmed self-approval policy and limits | Versioned self-approval policy; qualification/evidence/action-scope checks still apply; changer/designator A06 |
+| D07 | “basically unlimited authority myself, but I don't plan to use it”; organizations correct their own mistakes | Confirmed personal unrestricted application owner capability, not granted to all developers | Explicit owner actions preserve underlying facts/actor. Customer/conformance meaning was not settled by this answer; A02 is residual semantics, not a request to revoke the capability |
+| D08 | Cone designated approver may close process hold after checks pass/problem solved; Picogrid controls nonconforming hardware disposition; may work together | Confirmed process closure authority and customer disposition split | H closure versus NCR action/closure; collaboration does not replace Picogrid disposition approval; B26/B29 details remain |
+| D09 | “let the person approve the paper record” in response to signed paper/assisted entry without worker digital confirmation | Confirmed signed-paper support and authorized review/approval; no mandatory worker digital reconfirmation | Signature/source/performer/entrant/approver attribution; details B36, outage choice D14 |
+| D10 | Side A and B are separate welds on one coupon assembly; procedure picture referenced | Confirmed A/B meaning; not confirmation of physical coupon count or specimen plan | Add CouponWeld under assembly; separate pass actuals/specimen source links; B09/B10 |
+| D11 | Recommended qualification returns “sounds reasonable” after initial tentative yes | Confirmed software-design interpretation: M/D-origin C→M START/work-order-WPS review/readiness; H-origin C→verification acceptable/problem resolved before closure | Legacy Q06/Q07 closed for design. Preserve X03/X04 source wording discrepancy for controlled alignment, no PDF edits |
+| D12 | Comprehensive gap review requested; no coding until architecture reviewed/approved and critical questions resolved | Confirmed current task boundary; supersedes earlier readiness-to-finalize language | Architecture reopened. A/B/C taxonomy below replaces legacy priorities; no application code/migrations/services |
+| D13 | A01: “Yes, use that ownership rule” | Confirmed: official QC records, approvals/release history in app; Cone alternative traveler/forms via approved mapping, one identified authoritative source per fact | A01 resolved at architecture level; B30/B39 and equivalent-field mapping/ownership implementation still required |
+| D14 | A03: “Paper fallback with defined controls” | Confirmed: paper approvals during outage through an agreed fallback with current authority/hold checks and later reconciliation | A03 resolved at architecture policy level; detailed fallback procedure is B45, not invented. Does not authorize uncontrolled offline digital decisions |
+| D15 | A02: “Need to discuss this distinction” | Initial discussion request, subsequently resolved at architecture semantics level by D16–D17 | Keep this history; do not equate earlier discussion request with assent |
+| D16 | “I also need to act under formally delegated Picogrid authority” | Confirmed need for a separate Picogrid-delegate capacity; no actual delegation document/scope supplied | Add acting capacity and delegation evidence; do not infer that owner status itself is customer authority |
+| D17 | “Yes, distinguish the authority used” | Confirmed: actual signer identified; Picogrid approval when covered by recorded applicable delegation; owner-only action separately identified; original facts preserved | A02 resolved at architecture level. Detailed grant/scope/effectivity B46 remains |
+
+| D18 | A04: “Yes, allow independent serial outcomes” | Confirmed: several Landers per work order may have different operations/personnel/machines/holds/release and partial shipment | Serial/joint-operation state, explicit population membership and grouped entry; B31 details remain |
+| D19 | A05: “Yes, shared program records as proposed” | Confirmed: Cone shares Lander program QC/development/test/hold/disposition visibility; edit/approval grants remain separate; initial labs supply reports without accounts | Shared program read model for the three organizations; private service credentials and unrelated programs not included |
+| D20 | A06: “Yes, use scoped organizational delegation” | Confirmed: each senior organizational approver may appoint/revoke own backups and restrict self-approval within its authority; technical qualification tracked separately | No cross-organization authority creation or qualification manufactured by a software grant; specific people/qualification requirements B19/B46 remain |
+
+| D21 | Final two-question reply: “The answer to question one is no” | Confirmed no compulsory hosting/login/signature/storage constraints are currently known; accepted bounded architecture assumption, not proof of future customer acceptance or waiver of security | A07 resolved for architecture; managed-platform recommendation can proceed to review. Check any later customer constraints before operational deployment; B40–B42 remain |
+| D22 | Same reply: “the answer to question two is yes” | Confirmed automatic flags/dependency impact and pause of further affected approvals/releases/shipments pending authorized scoped review, with original history preserved | A08 resolved: Cone handles process review, Picogrid affected-hardware disposition including shipped units; no automatic recall instruction. B33–B35 detailed effects remain |
+
+| D23 | User answered “yes” to approval of revised architecture and authorization of a development prototype with unresolved engineering criteria visibly TBD and not acceptance evidence | Confirmed architecture approval and development-prototype implementation authorization only; not approval of source drafts or operational use | Prototype code and synthetic tests now authorized. Outstanding B controls continue to gate affected operational behavior; deferred prototype functions are listed in docs/prototype/README.md |
+
+| D24 | User chose a password-protected hosted preview and selected “Prepare Render” | Authorized preparation of a synthetic-data hosted preview with account/password setup in hosting settings; no real engineering attachments or local credentials exported | Add Render blueprint and HTTPS/login safeguards, publish isolated preview branch for account connection; creating/billing resources and live validation require hosting-account action. Not production authorization |
+
+## Critical-question tracking
+
+| Gap | Current state | Next action |
+| --- | --- | --- |
+| A01 official records | Resolved by D13 | Update integration/ownership design; map external sources before affected implementation |
+| A02 owner action meaning | Resolved D16–D17 | Model signer/capacity/delegation; B46 supplies actual delegation before use |
+| A03 outage paper decisions | Resolved by D14 | Design controlled reconciliation boundary; detailed operating rules B45 |
+| A04 independent work/release unit | Resolved D18 | Implement scope only after B-level traceability/operations rules are defined |
+| A05 Cone/lab visibility | Resolved D19 | Shared program reads, scoped editing/decisions; labs initially report uploads |
+| A06 designation/qualification/role policy | Resolved D20 | Organizational scope limits and separate technical evidence; B19/B46 actual requirements |
+| A07 compulsory platform/signature constraints | Resolved D21, bounded assumption | No known compulsory constraints; verify any later customer requirements before operational deployment |
+| A08 dependent evidence impact | Resolved D22 | Flag dependencies and pause further affected approvals/releases/shipments pending authorized review; detailed effects B33–B35 |
+
+## Update protocol
+
+For each reply: retain its wording/context, mark only answered portions resolved, identify whether it is product/organization policy or formal engineering approval evidence, link affected gap and verification IDs, update design files, and identify any remaining conflict. Recommendations/defaults must retain proposed status until accepted or legitimately ordinary implementation choices. Do not equate a generic “ok” with approval of unanswered engineering criteria or the whole architecture.
+
+All eight A decisions are now resolved for architecture review. The architecture and bounded development prototype were subsequently authorized D23; B decisions remain required before affected operational behavior and production use remains unauthorized.

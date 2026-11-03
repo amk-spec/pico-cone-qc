@@ -1,3 +1,23 @@
+# Picogrid Lander QC — development prototype
+
+Django/PostgreSQL prototype with linked QC records, explicit authority, evidence revisions, holds/NCRs and serial-level release review.
+
+```bash
+scripts/setup
+scripts/dev
+scripts/test
+```
+
+For a no-install browser preview, use the [password-protected Render deployment guide](docs/preview/README.md). Hosting-account creation/authorization is still required.
+
+Read the [prototype run and review guide](docs/prototype/README.md) for generated demo accounts, PostgreSQL configuration, demonstrated features and deliberate limits. The [design package](docs/design/README.md) preserves the source analysis and engineering TBDs.
+
+**Development review only.** Rev C/Rev A/workbook remain discussion drafts. Prototype decisions do not authorize production welding, qualification or shipment. Unresolved engineering criteria are not passing criteria.
+
+---
+
+The original project instructions are retained below.
+
 # pico-cone-qc# PICOGRID LANDER — WELDING QUALITY CONTROL APPLICATION
 ## Initial Codex Project Instructions
 

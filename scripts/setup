@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+mkdir -p .local
+if command -v uv >/dev/null 2>&1; then
+    export UV_CACHE_DIR="$(pwd)/.local/uv-cache"
+    if [[ ! -x .venv/bin/python ]]; then uv venv .venv; fi
+    uv pip sync --python .venv/bin/python requirements.txt
+else
+    if [[ ! -x .venv/bin/python ]]; then python3 -m venv .venv; fi
+    .venv/bin/python -m pip install -r requirements.txt
+fi
+scripts/local-db
+.venv/bin/python manage.py migrate --noinput
+.venv/bin/python manage.py seed_demo
+.venv/bin/python manage.py check
+.venv/bin/python manage.py collectstatic --noinput

@@ -1,0 +1,36 @@
+PICOGRID LANDER QC — LOCAL DEVELOPMENT PROTOTYPE
+
+1. Install Python 3.12 or newer from python.org if it is not installed.
+   On Windows, enable the installer option to add Python to PATH.
+2. Extract this entire ZIP into a folder you can write to.
+3. Open Terminal / PowerShell in that folder.
+4. Run:
+
+   Windows:       py -3 try_prototype.py
+   Mac / Linux:   python3 try_prototype.py
+
+The first run downloads the pinned Python dependencies, creates a local SQLite
+review database, displays generated login details, and opens the app in your
+browser. No PostgreSQL installation or hosted server is required.
+
+Sign in with the displayed owner account to explore, or the cone account to
+review the organizational workflow. Keep the terminal open while trying the app;
+Ctrl+C stops it. Subsequent runs preserve your local data and login details.
+Credentials are also stored in .local/sqlite-review/demo-accounts.txt inside the
+extracted folder.
+
+Start with Work orders -> DEMO-WO-104 -> a DEMO-LN serial.
+Explore Coupon register, Holds & NCRs, controlled records and Authority & access.
+Engineering criteria remain TBD; blocked acceptance/release decisions are intentional.
+Owner actions retain missing requirements and never change a test fact into PASS.
+
+This ZIP contains application source and synthetic seed data, NOT existing
+workspace passwords, databases, uploads, original engineering PDF/XLSX files, or
+real production records. The source register identifies those documents; their
+absence from this portable copy does not imply source approval or missing criteria
+are resolved. No historical workbook observations become qualified settings.
+
+The local quick review uses SQLite. The main development prototype was tested
+against PostgreSQL; SQLite does not validate its row-lock concurrency behavior.
+This is not a production system, welding qualification or shipment authorization.
+See docs/prototype/README.md for full scope and limitations.

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Validate login configuration before creating any public-facing processes.
+python -c 'import os; from django.core.management.base import CommandError; from django.conf import settings; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings"); import django; django.setup(); from qc.management.commands.seed_demo import Command; Command().hosted_passwords()'
+python manage.py migrate --noinput
+python manage.py seed_demo
+exec gunicorn config.wsgi:application --bind "0.0.0.0:${PORT:-8000}" --workers "${WEB_CONCURRENCY:-2}" --timeout 60 --access-logfile - --error-logfile -

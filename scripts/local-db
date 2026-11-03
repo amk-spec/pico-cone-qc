@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+# Optional rootless PostgreSQL installation retained by this cloud workspace.
+# External PostgreSQL uses DATABASE_URL and needs no local process management.
+if [[ -f .local/postgres-bin && -d .local/pgdata && -z "${DATABASE_URL:-}" && "${QC_USE_SQLITE:-0}" != 1 ]]; then
+    pg_bin=$(cat .local/postgres-bin)
+    if ! "$pg_bin/pg_ctl" -D .local/pgdata status >/dev/null 2>&1; then
+        "$pg_bin/pg_ctl" -D .local/pgdata -l .local/postgres.log \
+            -o "-k $(pwd)/.local/pgsocket -c listen_addresses=''" start
+    fi
+fi

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+python -m pip install -r requirements.txt
+# Build static assets without needing the runtime persistent disk or credentials.
+LANDER_BUILD=1 LANDER_HOSTED_PREVIEW=0 QC_USE_SQLITE=1 python manage.py collectstatic --noinput --clear

@@ -1,0 +1,39 @@
+# Proposed review environment. Render displays resource charges before creation.
+# No original engineering attachments or local databases are deployed.
+services:
+  - type: web
+    name: lander-qc-preview
+    runtime: python
+    region: oregon
+    plan: starter
+    buildCommand: bash scripts/render-build
+    startCommand: bash scripts/render-start
+    healthCheckPath: /health/
+    autoDeploy: false
+    disk:
+      name: lander-preview-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: LANDER_HOSTED_PREVIEW
+        value: "1"
+      - key: LANDER_DATA_DIR
+        value: /var/data/lander
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: LANDER_PREVIEW_OWNER_PASSWORD
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lander-qc-preview-db
+          property: connectionString
+      - key: WEB_CONCURRENCY
+        value: "2"
+databases:
+  - name: lander-qc-preview-db
+    region: oregon
+    plan: basic-256mb
+    databaseName: lander_preview
+    user: lander_preview
